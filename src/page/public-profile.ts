@@ -2,7 +2,7 @@ import { ServerResponse } from 'http';
 import { requestType } from '../middleware/authentication-user';
 import { config } from '../config.js';
 import { sendResponse, bodyParser } from '@godgiven/type-server';
-import { Database } from '@godgiven/database/json-file';
+import { Database } from '@godgiven/database/json-file.js';
 
 const ProfileStorage = new Database({
   name: 'data',
@@ -51,7 +51,14 @@ export const pagePublicProfile = async (request: requestType, response: ServerRe
 
     if (errorList.length <= 0)
     {
-      const save = await ProfileStorage.insert('profile', params);
+      const save = await ProfileStorage.insert(
+        'profile',
+        {
+          ...params,
+          ...{ accept: false }
+        },
+        params.phone
+      );
       if (save === true)
       {
         sendResponse(response, 200, {

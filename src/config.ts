@@ -19,6 +19,8 @@ export const config: Config =
   databasePath: './data',
   validate: {
     base: {},
-    publicProfile: {},
+    publicProfile: {
+      phone: ['required']
+    },
   }
 };
