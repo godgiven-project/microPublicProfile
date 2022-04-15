@@ -19,13 +19,6 @@ export const config: Config =
   databasePath: './data',
   validate: {
     base: {},
-    publicProfile: {
-      username: ['required'],
-      password: ['required']
-    },
-    login: {
-      username: ['required'],
-      password: ['required']
-    }
+    publicProfile: {},
   }
 };
