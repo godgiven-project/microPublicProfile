@@ -12,6 +12,6 @@ app.middlewareList.push(authFunction);
 
 app.register('GET', '/', pageHome);
 app.register('GET', '', pageHome);
-app.register('GET', '/public', pagePublicProfile);
+app.register('POST', '/public', pagePublicProfile);
 
 app.listen();

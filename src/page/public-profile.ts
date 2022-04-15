@@ -2,12 +2,12 @@ import { ServerResponse } from 'http';
 import { requestType } from '../middleware/authentication-user';
 import { config } from '../config.js';
 import { sendResponse, bodyParser } from '@godgiven/type-server';
-// import { Database } from '@godgiven/database/json-file';
+import { Database } from '@godgiven/database/json-file';
 
-// const ProfileStorage = new Database({
-//   name: 'Profile',
-//   path: './data',
-// });
+const ProfileStorage = new Database({
+  name: 'data',
+  path: './',
+});
 
 /**
  *
@@ -51,13 +51,28 @@ export const pagePublicProfile = async (request: requestType, response: ServerRe
 
     if (errorList.length <= 0)
     {
-      sendResponse(response, 200, {
-        ok: true,
-        description: '..:: Welcome ::..',
-        data: {
-          params,
-        },
-      });
+      const save = await ProfileStorage.insert('profile', params);
+      if (save === true)
+      {
+        sendResponse(response, 200, {
+          ok: true,
+          description: '..:: Welcome ::..',
+          data: {
+            params,
+          },
+        });
+      }
+      else
+      {
+        errorList.push('DataExsist');
+        sendResponse(response, 200, {
+          ok: false,
+          description: '..:: Welcome ::..',
+          data: {
+            errorList
+          },
+        });
+      }
     }
     else
     {
