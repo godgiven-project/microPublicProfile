@@ -64,9 +64,6 @@ export const pagePublicProfile = async (request: requestType, response: ServerRe
         sendResponse(response, 200, {
           ok: true,
           description: '..:: Welcome ::..',
-          data: {
-            params,
-          },
         });
       }
       else
