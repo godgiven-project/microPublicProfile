@@ -61,6 +61,7 @@ export const pagePublicProfile = async (request: requestType, response: ServerRe
       );
       if (save === true)
       {
+        response.setHeader('Access-Control-Allow-Origin', '*');
         sendResponse(response, 200, {
           ok: true,
           description: '..:: Welcome ::..',
@@ -69,6 +70,7 @@ export const pagePublicProfile = async (request: requestType, response: ServerRe
       else
       {
         errorList.push('DataExsist');
+        response.setHeader('Access-Control-Allow-Origin', '*');
         sendResponse(response, 200, {
           ok: false,
           description: '..:: Welcome ::..',
