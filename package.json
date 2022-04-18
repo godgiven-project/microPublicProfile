@@ -31,6 +31,7 @@
     "@godgiven/database": "^0.1.4",
     "@godgiven/type-server": "^0.1.4",
     "debug": "^4.3.4",
+    "dotenv": "^16.0.0",
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
