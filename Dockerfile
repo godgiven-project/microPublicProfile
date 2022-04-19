@@ -1,7 +1,7 @@
 FROM node:latest
+ENV port 5000
 
 COPY . /src
-
 WORKDIR /src
 
 RUN yarn 
