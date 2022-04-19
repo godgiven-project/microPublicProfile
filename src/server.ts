@@ -7,14 +7,14 @@ import {
 import { config } from 'dotenv';
 
 config();
-console.log();
 
 // envierment
-const port = parseInt(process.env.port as string) as number | 'NaN';
+const port = parseInt(process.env.port as string);
 const vertion = process.env.ver ?? 'v1';
 
 const app = new App();
-app.port = port !== 'NaN' ? port : 5000;
+
+app.port = !isNaN(port) ? port : 5000;
 app.version = vertion;
 app.middlewareList.push(authFunction);
 
