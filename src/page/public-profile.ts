@@ -57,7 +57,7 @@ export const pagePublicProfile = async (request: requestType, response: ServerRe
           ...params,
           ...{ accept: false }
         },
-        params.phone
+        params.Phone
       );
       if (save === true)
       {
